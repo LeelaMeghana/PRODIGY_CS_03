@@ -1,22 +1,17 @@
 import re
 
 def assess_password_strength(password):
-    # Length check
-    length_score = len(password) >= 8
     
-    # Check for uppercase letters
-    uppercase_score = bool(re.search(r'[A-Z]', password))
+    length_score = len(password) >= 8  # Length check
     
-    # Check for lowercase letters
-    lowercase_score = bool(re.search(r'[a-z]', password))
+    uppercase_score = bool(re.search(r'[A-Z]', password))  # Check for uppercase letters
     
-    # Check for numbers
-    number_score = bool(re.search(r'[0-9]', password))
+    lowercase_score = bool(re.search(r'[a-z]', password))  # Check for lowercase letters
     
-    # Check for special characters
-    special_char_score = bool(re.search(r'[^A-Za-z0-9]', password))
+    number_score = bool(re.search(r'[0-9]', password))  # Check for numbers
     
-    # Calculate total score
+    special_char_score = bool(re.search(r'[^A-Za-z0-9]', password))  # Check for special characters
+    
     total_score = length_score + uppercase_score + lowercase_score + number_score + special_char_score
     
     # Assess strength based on total score
@@ -27,7 +22,6 @@ def assess_password_strength(password):
     else:
         return "Weak"
 
-# Example usage
 password = input("Enter your password: ")
 strength = assess_password_strength(password)
 print("Password strength:", strength)
